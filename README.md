@@ -70,7 +70,7 @@ A total of 14 predictive features were generated, including:
 
 ---
 
-## Model Performance
+## Model Performance & Findings
 
 **Walk-Forward Validation Metrics for TSLA:**
 
@@ -87,6 +87,11 @@ A total of 14 predictive features were generated, including:
 | LassoCV                    | 0.1329  | 0.0809 | 0.9902 |
 | RidgeCV                    | 0.1389  | 0.0795 | 0.9893 |
 | Baseline Linear Regression | 0.3496  | 0.1355 | 0.9787 |
+
+
+- **Model effectiveness varied by stock**:
+    - MLP Regressor performed best for **TSLA**, likely due to its ability to capture nonlinear behavior in more volatile stocks.
+    - Regularized linear models like **LassoCV** and **RidgeCV** outperformed for **AAPL**, suggesting simpler relationships between features and volatility.
 
 ---
 ## Limitations and Challenges
