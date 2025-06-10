@@ -23,6 +23,7 @@ Predicting stock volatility is crucial for traders, investors, and risk managers
 ---
 
 ## Features
+
 **Historical Data Integration:** Utilizes daily stock price data from Yahoo Finance, covering multiple years to capture market trends.
 **Sentiment Analysis:** Incorporates news sentiment scores derived from headlines using TextBlob, providing external market influence signals.
 **Technical Indicators:** Calculates key technical metrics such as RSI, MACD, and EMA to enrich feature sets.
@@ -34,8 +35,7 @@ Predicting stock volatility is crucial for traders, investors, and risk managers
 - `AAPL_volitality.ipynb` — Volatility prediction workflow for Apple (AAPL)
 - `TSLA_volitality.ipynb` — Volatility prediction workflow for Tesla (TSLA)
 - `requirements.txt` — List of required Python packages
-- `processed_stock_data.csv` — Example of processed output data
-- `data/` — (Optional) Directory for raw or intermediate data (currently empty)
+- `data/` —> `processed_stock_data.csv` — Example of processed input data
 - `.gitignore` — Standard ignores (including `data/`, notebook checkpoints, and virtual environments)
 ---
 
