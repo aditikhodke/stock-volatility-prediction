@@ -24,13 +24,15 @@ Predicting stock volatility is crucial for traders, investors, and risk managers
 
 ## Features
 
-**Historical Data Integration:** Utilizes daily stock price data from Yahoo Finance, covering multiple years to capture market trends.
-**Sentiment Analysis:** Incorporates news sentiment scores derived from headlines using TextBlob, providing external market influence signals.
-**Technical Indicators:** Calculates key technical metrics such as RSI, MACD, and EMA to enrich feature sets.
-**Modeling Approaches:** Implements multiple models including Linear Regression, Ridge, Lasso, Random Forest, Gradient Boosting, and neural networks (MLP).
-**Evaluation & Validation:** Uses time series-aware validation strategies and reports metrics like RMSE, MAE, and R².
-**Visualization:** Generates insightful charts for feature importance, prediction vs actual, and model performance.
+- **Historical Data Integration:** Utilizes daily stock price data from Yahoo Finance, covering multiple years to capture market trends.  
+- **Sentiment Analysis:** Incorporates news sentiment scores derived from headlines using TextBlob, providing external market influence signals.  
+- **Technical Indicators:** Calculates key technical metrics such as RSI, MACD, and EMA to enrich feature sets.  
+- **Modeling Approaches:** Implements multiple models including Linear Regression, Ridge, Lasso, Random Forest, Gradient Boosting, and neural networks (MLP).  
+- **Evaluation & Validation:** Uses time series-aware validation strategies and reports metrics like RMSE, MAE, and R².  
+- **Visualization:** Generates insightful charts for feature importance, prediction vs actual, and model performance.
+
 ---
+
 ## Repository Structure
 - `AAPL_volitality.ipynb` — Volatility prediction workflow for Apple (AAPL)
 - `TSLA_volitality.ipynb` — Volatility prediction workflow for Tesla (TSLA)
