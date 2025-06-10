@@ -14,31 +14,21 @@
 
 ## 🔍 Overview
 
-**stock-volatility-prediction** is a toolkit for forecasting stock volatility using historical price data and sentiment analysis from news headlines. It provides hands-on Jupyter Notebooks for interactive exploration and model building.
+**stock-volatility-prediction** is an analytical toolkit designed to forecast stock market volatility by leveraging historical price data and sentiment analysis from news headlines. It provides interactive Jupyter Notebooks for data exploration, feature engineering, model training, and evaluation, aiming to support informed investment and risk management decisions.
+
+---
+## Why Use This Toolkit?
+Predicting stock volatility is crucial for traders, investors, and risk managers to optimize portfolio strategies and hedge against market uncertainties. This project combines technical analysis, natural language processing, and machine learning to deliver a comprehensive approach to volatility forecasting.
 
 ---
 
-## ❓ Why stock-volatility-prediction?
-
-This project provides insights into stock price fluctuations to support **informed investment decisions**. It combines technical analysis and natural language processing into a powerful toolkit.
-
-### 🔑 Key Features
-
-- **📉 Historical Data Integration**  
-  Analyze past stock performance to uncover patterns and generate data-driven insights.
-
-- **🗞️ Sentiment Analysis**  
-  Leverage news headlines to gauge market sentiment and understand external influences on stock movement.
-
-- **📓 Interactive Notebooks**  
-  Hands-on exploration of **AAPL** and **TSLA** volatility through Jupyter Notebooks for interactive data science workflows.
-
-- **📊 Visualization Tools**  
-  Gain intuitive insights through clean and informative charts, heatmaps, and time plots.
-
-- **📈 Time-Series Models**  
-  Apply statistical models (e.g., rolling volatility, exponential moving averages) to forecast future volatility trends.
-
+## Features
+**Historical Data Integration:** Utilizes daily stock price data from Yahoo Finance, covering multiple years to capture market trends.
+**Sentiment Analysis:** Incorporates news sentiment scores derived from headlines using TextBlob, providing external market influence signals.
+**Technical Indicators:** Calculates key technical metrics such as RSI, MACD, and EMA to enrich feature sets.
+**Modeling Approaches:** Implements multiple models including Linear Regression, Ridge, Lasso, Random Forest, Gradient Boosting, and neural networks (MLP).
+**Evaluation & Validation:** Uses time series-aware validation strategies and reports metrics like RMSE, MAE, and R².
+**Visualization:** Generates insightful charts for feature importance, prediction vs actual, and model performance.
 ---
 ## Repository Structure
 - `AAPL_volitality.ipynb` — Volatility prediction workflow for Apple (AAPL)
@@ -49,8 +39,79 @@ This project provides insights into stock price fluctuations to support **inform
 - `.gitignore` — Standard ignores (including `data/`, notebook checkpoints, and virtual environments)
 ---
 
+## Technical Architecture
 
-## ⚙️ Setup
+### Multimodal Data Pipeline
+- **Historical OHLCV Data**: 2-year window from Yahoo Finance  
+- **News Sentiment Data**: 30-day rolling window via NewsAPI  
+
+A total of 14 predictive features were generated, including:
+
+- **Exponential Moving Average** (10-day window)
+- **MACD** (Moving Average Convergence Divergence, 26/12/9 configuration)
+- **RSI** (14-day Relative Strength Index)
+- **Lagged Volatility Indicators** (volatility_pct_lag1, rsi_lag1)
+- **Sentiment Scores** using TextBlob from financial news headlines
+ 
+
+### Machine Learning Pipeline
+**Model Comparison Framework:**  
+- **Baseline**: Linear Regression  
+- **Regularized**: RidgeCV, LassoCV  
+- **Tree-Based**: Random Forest, Gradient Boosting  
+- **Neural**: MLPRegressor (256-128-64 architecture)  
+
+**Validation Strategy:**  
+- TimeSeriesSplit (5 splits)  
+- Walk-forward validation  
+- Strict train-test temporal segregation  
+
+---
+
+## Model Performance
+
+**Walk-Forward Validation Metrics for TSLA:**
+
+| Model                       | WF_RMSE | WF_MAE | WF_R²  |
+|----------------------------|---------|--------|--------|
+| MLP Regressor              | 0.8113  | 0.4062 | 0.9235 |
+| Baseline Linear Regression | 0.9463  | 0.5136 | 0.8959 |
+| RidgeCV                    | 0.9735  | 0.4944 | 0.8912 |
+
+**Walk-Forward Validation Metrics for AAPL:**
+
+| Model                       | WF_RMSE | WF_MAE | WF_R²  |
+|----------------------------|---------|--------|--------|
+| LassoCV                    | 0.1329  | 0.0809 | 0.9902 |
+| RidgeCV                    | 0.1389  | 0.0795 | 0.9893 |
+| Baseline Linear Regression | 0.3496  | 0.1355 | 0.9787 |
+
+---
+## Limitations and Challenges
+
+### Data Constraints
+
+- **Temporal Mismatch**: - **Text sentiment scores** from financial news headlines showed **lower predictive power**, likely due to the limited 30-day window compared to 2 years of price data.
+
+- **Market Regime Coverage**: The 2-year window may not capture diverse market regimes (e.g., crashes, booms), which limits model generalizability.
+- **Volatility-Specific Challenge**: During high-volatility periods, models showed **10–15% RMSE degradation** compared to stable intervals.
+
+---
+
+## Development Roadmap
+
+### Near-Term Priorities
+1. **Real-Time Prediction System**  
+   - Streaming data pipeline architecture  
+   - Dockerized model serving  
+
+2. **Enhanced Sentiment Integration**  
+   - Earnings call transcript analysis  
+   - Social media sentiment aggregation  
+
+---
+
+## Setup
 
 1. **Clone the repository:**
    ```bash
@@ -67,7 +128,7 @@ This project provides insights into stock price fluctuations to support **inform
 
 ---
 
-## 🚀 Usage
+## Usage
 
 1. **Open a notebook:**
    - Use Jupyter Notebook or JupyterLab to open `AAPL_volitality.ipynb` or `TSLA_volitality.ipynb`.
@@ -85,7 +146,7 @@ This project provides insights into stock price fluctuations to support **inform
 
 ---
 
-## 🌐 API
+## API
 
 - **NewsAPI** is required for news sentiment analysis.
 - You must obtain your own API key and paste it in the notebook cell:
@@ -97,7 +158,7 @@ This project provides insights into stock price fluctuations to support **inform
 
 ---
 
-## 📬 Contributions
+## Contributions
 
 Open to suggestions, improvements, and pull requests! Whether you're fixing a bug or introducing a new feature — you're welcome here.
 
